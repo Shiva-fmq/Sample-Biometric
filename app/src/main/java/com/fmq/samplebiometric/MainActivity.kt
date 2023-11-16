@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun isBiometricSupported(): Pair<Boolean,String> {
         val biometricManager = BiometricManager.from(this)
-        val canAuthenticate = biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK)
+        val canAuthenticate = biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
         when (canAuthenticate) {
             BiometricManager.BIOMETRIC_SUCCESS -> {
                 // The user can authenticate with biometrics, continue with the authentication process
@@ -166,6 +166,5 @@ class MainActivity : AppCompatActivity() {
                 showBiometricPrompt()
             }
         }
-
     }
 }
